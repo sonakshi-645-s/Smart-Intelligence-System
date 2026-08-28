@@ -1,0 +1,115 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Warm Decent Yellow & Dark Brown Palette */
+  --bg-primary: #0C0A09;      /* Stone 950 / Dark Obsidian */
+  --bg-secondary: #1C1917;    /* Stone 900 */
+  --card-bg: rgba(28, 25, 23, 0.88);
+  --card-border: rgba(68, 64, 60, 0.7);
+  --text-primary: #FAF8F5;
+  --text-muted: #A8A29E;
+  --accent-yellow: #EAB308;   /* Decent Vibrant Yellow */
+  --accent-brown: #78350F;    /* Deep Dark Brown */
+  --accent-light-brown: #B45309;
+  --accent-emerald: #10B981;
+  --accent-rose: #EF4444;
+}
+
+html.light {
+  /* Clean, High-Contrast Light Theme with Warm Coffee & Cream */
+  --bg-primary: #FDFBF7;      /* Warm Alabaster */
+  --bg-secondary: #F5EFEB;    /* Soft Warm Cream */
+  --card-bg: rgba(255, 255, 255, 0.95);
+  --card-border: rgba(214, 203, 191, 0.85);
+  --text-primary: #29180E;    /* Dark Espresso */
+  --text-muted: #786C62;      /* Warm Slate Muted */
+  --accent-yellow: #CA8A04;   /* Warm Ochre Gold */
+  --accent-brown: #5C2406;    /* Rich Dark Roast */
+  --accent-light-brown: #9A3412;
+  --accent-emerald: #059669;
+  --accent-rose: #DC2626;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: 'Inter', 'Plus Jakarta Sans', system-ui, sans-serif;
+  overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Glassmorphic Decent Yellow/Brown Cards */
+.glass-card {
+  background: var(--card-bg);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--card-border);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.35);
+  border-radius: 1.1rem;
+}
+
+html.light .glass-card {
+  box-shadow: 0 8px 25px -8px rgba(92, 36, 6, 0.08);
+}
+
+.glass-card-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-card-hover:hover {
+  transform: translateY(-3px);
+  border-color: rgba(234, 179, 8, 0.5);
+  box-shadow: 0 14px 35px -8px rgba(234, 179, 8, 0.2);
+}
+
+html.light .glass-card-hover:hover {
+  border-color: rgba(120, 53, 15, 0.4);
+  box-shadow: 0 14px 35px -8px rgba(120, 53, 15, 0.15);
+}
+
+/* Leaflet Map Styling */
+html.dark .leaflet-tile-pane {
+  filter: brightness(0.65) invert(1) contrast(2.8) hue-rotate(195deg) saturate(0.3) brightness(0.7);
+}
+
+.leaflet-container {
+  font-family: inherit !important;
+  background: #1C1917 !important;
+  border-radius: 1rem;
+}
+
+html.light .leaflet-container {
+  background: #F5EFEB !important;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #57534E;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #78716C;
+}
+
+/* Audio Waveform Animation */
+@keyframes audioWave {
+  0%, 100% { height: 6px; }
+  50% { height: 28px; }
+}
+
+.audio-bar {
+  animation: audioWave 1.2s ease-in-out infinite;
+}
+.audio-bar:nth-child(2) { animation-delay: 0.2s; }
+.audio-bar:nth-child(3) { animation-delay: 0.4s; }
+.audio-bar:nth-child(4) { animation-delay: 0.1s; }
+.audio-bar:nth-child(5) { animation-delay: 0.3s; }

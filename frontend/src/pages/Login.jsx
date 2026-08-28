@@ -63,31 +63,12 @@ const Login = ({ onLoginSuccess }) => {
     setSuccessMsg('');
 
     try {
-      const hasFiles = Object.values(files).some(Boolean);
-
       if (authMode === 'login') {
-        let res;
-        if (hasFiles) {
-          const formData = new FormData();
-          formData.append('email', email.trim());
-          formData.append('organization_name', orgName.trim());
-          formData.append('password', password.trim());
-          if (files.warehouses) formData.append('warehouses', files.warehouses);
-          if (files.suppliers) formData.append('suppliers', files.suppliers);
-          if (files.customers) formData.append('customers', files.customers);
-          if (files.inventory) formData.append('inventory', files.inventory);
-          if (files.workforce) formData.append('workforce', files.workforce);
-
-          res = await api.post('/auth/login/', formData, {
-            headers: { 'Content-Type': 'multipart/form-data' },
-          });
-        } else {
-          res = await api.post('/auth/login/', {
-            email: email.trim(),
-            organization_name: orgName.trim(),
-            password: password.trim(),
-          });
-        }
+        const res = await api.post('/auth/login/', {
+          email: email.trim(),
+          organization_name: orgName.trim(),
+          password: password.trim(),
+        });
 
         setSuccessMsg(`Welcome, ${res.data.user}. Loading enterprise network...`);
         setTimeout(() => {
@@ -102,6 +83,7 @@ const Login = ({ onLoginSuccess }) => {
         }, 600);
       } else {
         // New user registration & dataset ingestion
+        const hasFiles = Object.values(files).some(Boolean);
         const formData = new FormData();
         formData.append('email', email.trim());
         formData.append('organization_name', orgName.trim());
@@ -142,7 +124,7 @@ const Login = ({ onLoginSuccess }) => {
     <div className={`min-h-screen flex items-center justify-center p-4 sm:p-6 transition-colors duration-300 ${
       isDark ? 'bg-[#0C0A09] text-stone-100' : 'bg-white text-slate-900'
     } selection:bg-yellow-500 selection:text-stone-950`}>
-      <div className={`w-full max-w-3xl glass-card rounded-2xl shadow-xl overflow-hidden p-6 sm:p-8 space-y-6 border ${
+      <div className={`w-full ${authMode === 'login' ? 'max-w-xl' : 'max-w-3xl'} glass-card rounded-2xl shadow-xl overflow-hidden p-6 sm:p-8 space-y-6 border transition-all duration-300 ${
         isDark ? 'bg-stone-900/95 border-stone-700/80' : 'bg-white border-[#E2E8F0]'
       }`}>
         
@@ -160,7 +142,9 @@ const Login = ({ onLoginSuccess }) => {
                 </span>
               </div>
               <p className="text-xs text-stone-400 mt-0.5">
-                Multi-Warehouse Network Control &bull; Analyze and optimize all regional hubs simultaneously
+                {authMode === 'login'
+                  ? 'Multi-Warehouse Network Control • Sign in to access your dashboard'
+                  : 'Multi-Warehouse Network Control • Register organization and ingest supply chain datasets'}
               </p>
             </div>
           </div>
@@ -240,7 +224,7 @@ const Login = ({ onLoginSuccess }) => {
             )}
 
             {/* Email ID */}
-            <div className="space-y-1.5">
+            <div className={`space-y-1.5 ${authMode === 'login' ? 'sm:col-span-2' : ''}`}>
               <label className="text-xs font-bold text-stone-300 flex items-center gap-1.5">
                 <Mail className="w-3.5 h-3.5 text-yellow-400" />
                 Login Mail ID
@@ -256,7 +240,7 @@ const Login = ({ onLoginSuccess }) => {
             </div>
 
             {/* Organisation Name */}
-            <div className="space-y-1.5">
+            <div className={`space-y-1.5 ${authMode === 'login' ? 'sm:col-span-2' : ''}`}>
               <label className="text-xs font-bold text-stone-300 flex items-center gap-1.5">
                 <Building2 className="w-3.5 h-3.5 text-yellow-400" />
                 Organisation Name
@@ -288,23 +272,21 @@ const Login = ({ onLoginSuccess }) => {
             </div>
           </div>
 
-          {/* DATASET INGESTION: AVAILABLE IN BOTH MODES */}
-          <div className="p-4 rounded-xl bg-stone-950/70 border border-stone-800 space-y-4 animate-in fade-in duration-200">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-stone-800 pb-3">
-              <div>
-                <h3 className="text-xs font-bold text-stone-200 flex items-center gap-2">
-                  <Database className="w-4 h-4 text-yellow-400" />
-                  {authMode === 'register' ? 'Multi-Warehouse Dataset Ingestion' : 'Upload Custom Datasets on Login (Optional)'}
-                </h3>
-                <p className="text-[11px] text-stone-400 mt-0.5">
-                  {authMode === 'register'
-                    ? 'Upload your enterprise CSV files to populate internal metrics, or initialize with demo data.'
-                    : 'Select your CSV files to refresh internal warehouse data immediately upon login.'}
-                </p>
-              </div>
+          {/* DATASET INGESTION: ONLY VISIBLE DURING SIGN UP (REGISTRATION) */}
+          {authMode === 'register' && (
+            <div className="p-4 rounded-xl bg-stone-950/70 border border-stone-800 space-y-4 animate-in fade-in duration-200">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-stone-800 pb-3">
+                <div>
+                  <h3 className="text-xs font-bold text-stone-200 flex items-center gap-2">
+                    <Database className="w-4 h-4 text-yellow-400" />
+                    Multi-Warehouse Dataset Ingestion
+                  </h3>
+                  <p className="text-[11px] text-stone-400 mt-0.5">
+                    Upload your enterprise CSV files to populate internal metrics, or initialize with demo data.
+                  </p>
+                </div>
 
-              {/* 1-Click Demo Toggle (Only in Register Mode) */}
-              {authMode === 'register' && (
+                {/* 1-Click Demo Toggle */}
                 <label className="flex items-center gap-2 cursor-pointer text-xs font-semibold bg-stone-900 border border-stone-700 px-3 py-1.5 rounded-lg hover:border-yellow-500/50 transition-colors">
                   <input
                     type="checkbox"
@@ -317,37 +299,37 @@ const Login = ({ onLoginSuccess }) => {
                     Start with Verified Demo Data
                   </span>
                 </label>
-              )}
-            </div>
+              </div>
 
-            {/* 5 CSV Pickers */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              {[
-                { key: 'suppliers', label: '1. suppliers.csv (Vendors, Origins, Volumes, Lead Times)' },
-                { key: 'customers', label: '2. customers.csv (Destinations, SLAs, Volumes)' },
-                { key: 'inventory', label: '3. inventory.csv (SKUs, Stock on Hand, Safety Stock)' },
-                { key: 'workforce', label: '4. workforce.csv (Skills, Shift Schedules, Efficiency)' },
-                { key: 'warehouses', label: '5. warehouses.csv (Facility Names, Cities, Docks)' },
-              ].map((item) => (
-                <div key={item.key} className="p-2.5 rounded-lg bg-stone-900/80 border border-stone-800/80">
-                  <div className="flex justify-between items-center mb-1">
-                    <span className="text-[11px] font-semibold text-stone-300 truncate">{item.label}</span>
-                    {files[item.key] && (
-                      <span className="text-[10px] text-emerald-400 font-bold flex items-center gap-0.5">
-                        <CheckCircle2 className="w-3 h-3" /> Ready
-                      </span>
-                    )}
+              {/* 5 CSV Pickers */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                {[
+                  { key: 'suppliers', label: '1. suppliers.csv (Vendors, Origins, Volumes, Lead Times)' },
+                  { key: 'customers', label: '2. customers.csv (Destinations, SLAs, Volumes)' },
+                  { key: 'inventory', label: '3. inventory.csv (SKUs, Stock on Hand, Safety Stock)' },
+                  { key: 'workforce', label: '4. workforce.csv (Skills, Shift Schedules, Efficiency)' },
+                  { key: 'warehouses', label: '5. warehouses.csv (Facility Names, Cities, Docks)' },
+                ].map((item) => (
+                  <div key={item.key} className="p-2.5 rounded-lg bg-stone-900/80 border border-stone-800/80">
+                    <div className="flex justify-between items-center mb-1">
+                      <span className="text-[11px] font-semibold text-stone-300 truncate">{item.label}</span>
+                      {files[item.key] && (
+                        <span className="text-[10px] text-emerald-400 font-bold flex items-center gap-0.5">
+                          <CheckCircle2 className="w-3 h-3" /> Ready
+                        </span>
+                      )}
+                    </div>
+                    <input
+                      type="file"
+                      accept=".csv"
+                      onChange={(e) => handleFileChange(item.key, e)}
+                      className="block w-full text-[10px] text-stone-400 file:mr-2 file:py-0.5 file:px-2 file:rounded file:border-0 file:text-[10px] file:font-semibold file:bg-stone-800 file:text-stone-300 hover:file:bg-stone-700 cursor-pointer"
+                    />
                   </div>
-                  <input
-                    type="file"
-                    accept=".csv"
-                    onChange={(e) => handleFileChange(item.key, e)}
-                    className="block w-full text-[10px] text-stone-400 file:mr-2 file:py-0.5 file:px-2 file:rounded file:border-0 file:text-[10px] file:font-semibold file:bg-stone-800 file:text-stone-300 hover:file:bg-stone-700 cursor-pointer"
-                  />
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
-          </div>
+          )}
 
           {/* Action Row & Switcher link */}
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-2">

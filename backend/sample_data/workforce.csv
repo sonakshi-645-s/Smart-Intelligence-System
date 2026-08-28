@@ -1,0 +1,19 @@
+employee_id,name,primary_skill,secondary_skill,efficiency_score,shift
+EMP-301,Marcus Vance,Inbound Receiving,Forklift Operations,0.94,Morning
+EMP-302,Elena Rostova,Quality Inspection,Inbound Receiving,0.91,Morning
+EMP-303,Devin Zhao,Forklift Operations,Staging & Dispatch,0.88,Morning
+EMP-304,Priya Sharma,Order Picking,Packing & Labelling,0.96,Morning
+EMP-305,Carlos Mendez,Packing & Labelling,Order Picking,0.85,Morning
+EMP-306,Fatima Al-Mansoor,Staging & Dispatch,Forklift Operations,0.92,Morning
+EMP-307,James O'Connor,Inventory Audit,Quality Inspection,0.89,Morning
+EMP-308,Aaliyah Brooks,Inbound Receiving,Quality Inspection,0.87,Evening
+EMP-309,Kenji Takahashi,Forklift Operations,Inbound Receiving,0.93,Evening
+EMP-310,Sophie Laurent,Order Picking,Staging & Dispatch,0.90,Evening
+EMP-311,Rajesh Patel,Packing & Labelling,Inventory Audit,0.95,Evening
+EMP-312,Mateo Silva,Staging & Dispatch,Packing & Labelling,0.84,Evening
+EMP-313,Chloe Dubois,Quality Inspection,Inventory Audit,0.92,Evening
+EMP-314,Vikram Sengupta,Inbound Receiving,Forklift Operations,0.86,Night
+EMP-315,Hannah Schmidt,Order Picking,Packing & Labelling,0.89,Night
+EMP-316,Liam Gallagher,Forklift Operations,Staging & Dispatch,0.91,Night
+EMP-317,Ananya Iyer,Quality Inspection,Inbound Receiving,0.94,Night
+EMP-318,Tariq Nasser,Staging & Dispatch,Forklift Operations,0.82,Night

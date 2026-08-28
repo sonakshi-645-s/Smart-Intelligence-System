@@ -1,0 +1,227 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Warm Decent Yellow & Dark Brown Palette */
+  --bg-primary: #0C0A09;      /* Stone 950 / Dark Obsidian */
+  --bg-secondary: #1C1917;    /* Stone 900 */
+  --card-bg: rgba(28, 25, 23, 0.88);
+  --card-border: rgba(68, 64, 60, 0.7);
+  --text-primary: #FAF8F5;
+  --text-muted: #A8A29E;
+  --accent-yellow: #EAB308;   /* Decent Vibrant Yellow */
+  --accent-brown: #78350F;    /* Deep Dark Brown */
+  --accent-light-brown: #B45309;
+  --accent-emerald: #10B981;
+  --accent-rose: #EF4444;
+}
+
+html.light {
+  /* Clean, High-Contrast Light Theme with Warm Coffee & Cream */
+  --bg-primary: #F8FAFC;      /* Clean Crisp Light */
+  --bg-secondary: #F1F5F9;    /* Slate 100 */
+  --card-bg: #FFFFFF;
+  --card-border: #E2E8F0;
+  --text-primary: #0F172A;    /* Slate 900 */
+  --text-muted: #475569;      /* Slate 600 */
+  --accent-yellow: #D97706;   /* Rich Amber */
+  --accent-brown: #78350F;    /* Rich Dark Roast */
+  --accent-light-brown: #B45309;
+  --accent-emerald: #059669;
+  --accent-rose: #DC2626;
+}
+
+/* Global Light Mode Overrides for Perfect Legibility */
+html.light body {
+  background-color: #FFFFFF !important;
+  color: #0F172A !important;
+}
+
+html.light .text-yellow-400,
+html.light .text-yellow-500 {
+  color: #B45309 !important;
+}
+
+html.light .bg-yellow-500 {
+  background-color: #EAB308 !important;
+  color: #351C15 !important;
+}
+
+html.light .bg-yellow-500\/10,
+html.light .bg-yellow-500\/15,
+html.light .bg-yellow-500\/20 {
+  background-color: #FEF3C7 !important;
+  color: #78350F !important;
+}
+
+html.light .border-yellow-500,
+html.light .border-yellow-500\/30,
+html.light .border-yellow-500\/20 {
+  border-color: #EAB308 !important;
+}
+
+html.light .glass-card {
+  background: #FFFFFF !important;
+  border-color: #E2E8F0 !important;
+  box-shadow: 0 4px 20px -4px rgba(53, 28, 21, 0.06) !important;
+  color: #0F172A !important;
+}
+
+html.light .bg-stone-950,
+html.light .bg-stone-950\/90,
+html.light .bg-stone-950\/80,
+html.light .bg-stone-950\/70,
+html.light .bg-stone-950\/60 {
+  background-color: #F1F5F9 !important;
+}
+
+html.light .bg-stone-900,
+html.light .bg-stone-900\/95,
+html.light .bg-stone-900\/90,
+html.light .bg-stone-900\/80 {
+  background-color: #FFFFFF !important;
+}
+
+html.light .bg-stone-800,
+html.light .bg-stone-800\/80,
+html.light .bg-stone-800\/40 {
+  background-color: #F1F5F9 !important;
+}
+
+html.light .border-stone-800,
+html.light .border-stone-700,
+html.light .border-stone-800\/80 {
+  border-color: #E2E8F0 !important;
+}
+
+html.light .text-stone-100,
+html.light .text-stone-200 {
+  color: #0F172A !important;
+}
+
+html.light .text-stone-300 {
+  color: #334155 !important;
+}
+
+html.light .text-stone-400 {
+  color: #64748B !important;
+}
+
+html.light .text-stone-500 {
+  color: #64748B !important;
+}
+
+html.light input,
+html.light select,
+html.light textarea {
+  background-color: #FFFFFF !important;
+  color: #0F172A !important;
+  border-color: #CBD5E1 !important;
+}
+
+html.light input::placeholder,
+html.light textarea::placeholder {
+  color: #94A3B8 !important;
+}
+
+html.light .divide-stone-800,
+html.light .divide-stone-800\/80 {
+  border-color: #E2E8F0 !important;
+}
+
+html.light nav {
+  background-color: #FFFFFF !important;
+  border-color: #E2E8F0 !important;
+}
+
+html.light header {
+  background-color: rgba(255, 255, 255, 0.92) !important;
+  border-color: #E2E8F0 !important;
+}
+
+html.light .hover\:text-stone-200:hover {
+  color: #0F172A !important;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: 'Inter', 'Plus Jakarta Sans', system-ui, sans-serif;
+  overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Glassmorphic Decent Yellow/Brown Cards */
+.glass-card {
+  background: var(--card-bg);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--card-border);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.35);
+  border-radius: 1.1rem;
+}
+
+html.light .glass-card {
+  box-shadow: 0 8px 25px -8px rgba(92, 36, 6, 0.08);
+}
+
+.glass-card-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-card-hover:hover {
+  transform: translateY(-3px);
+  border-color: rgba(234, 179, 8, 0.5);
+  box-shadow: 0 14px 35px -8px rgba(234, 179, 8, 0.2);
+}
+
+html.light .glass-card-hover:hover {
+  border-color: rgba(120, 53, 15, 0.4);
+  box-shadow: 0 14px 35px -8px rgba(120, 53, 15, 0.15);
+}
+
+/* Leaflet Map Styling */
+html.dark .leaflet-tile-pane {
+  filter: brightness(0.65) invert(1) contrast(2.8) hue-rotate(195deg) saturate(0.3) brightness(0.7);
+}
+
+.leaflet-container {
+  font-family: inherit !important;
+  background: #1C1917 !important;
+  border-radius: 1rem;
+}
+
+html.light .leaflet-container {
+  background: #F5EFEB !important;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #57534E;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #78716C;
+}
+
+/* Audio Waveform Animation */
+@keyframes audioWave {
+  0%, 100% { height: 6px; }
+  50% { height: 28px; }
+}
+
+.audio-bar {
+  animation: audioWave 1.2s ease-in-out infinite;
+}
+.audio-bar:nth-child(2) { animation-delay: 0.2s; }
+.audio-bar:nth-child(3) { animation-delay: 0.4s; }
+.audio-bar:nth-child(4) { animation-delay: 0.1s; }
+.audio-bar:nth-child(5) { animation-delay: 0.3s; }

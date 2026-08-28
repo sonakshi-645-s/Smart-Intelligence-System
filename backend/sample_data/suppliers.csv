@@ -1,0 +1,11 @@
+supplier_id,name,origin_city,latitude,longitude,item_type,volume_history,lead_time_days
+SUP-101,Apex Precision Components,Frankfurt,50.1109,8.6821,Precision Gears,14500,5
+SUP-102,Tokyo Micro-Systems,Tokyo,35.6762,139.6503,Sensor Arrays,28400,12
+SUP-103,Detroit Industrial Castings,Detroit,42.3314,-83.0458,Structural Alloy,18200,4
+SUP-104,Formosa Silicon Foundry,Kaohsiung,22.6273,120.3014,Microchips,35000,14
+SUP-105,Hanseatic Polymer Logistics,Rotterdam,51.9244,4.4777,Polymer Resins,12600,6
+SUP-106,Seoul Battery Cell Tech,Seoul,37.5665,126.9780,High-Torque Motors,22100,9
+SUP-107,Monterrey Fasteners Inc,Monterrey,25.6866,-100.3161,Fasteners,8900,3
+SUP-108,Sundance Electro-Optics,Phoenix,33.4484,-112.0740,Optical Lenses,11400,5
+SUP-109,Bharat Composites,Mumbai,19.0760,72.8777,Carbon Composites,9700,8
+SUP-110,Nordic Hydraulic Systems,Gothenburg,57.7089,11.9746,Hydraulic Actuators,7400,7

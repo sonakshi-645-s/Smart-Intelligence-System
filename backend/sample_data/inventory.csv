@@ -1,0 +1,13 @@
+sku_id,category,stock_on_hand,safety_stock,turnover_ratio,movement_velocity
+SKU-5001,Electronics,3400,5000,8.2,Fast
+SKU-5002,Electronics,12500,8000,12.5,Fast
+SKU-5003,Mechanical,1850,2200,4.1,Medium
+SKU-5004,Mechanical,6200,4500,6.7,Fast
+SKU-5005,Polymers,890,1500,2.8,Slow
+SKU-5006,Polymers,4300,3000,5.4,Medium
+SKU-5007,Fasteners,18000,10000,15.2,Fast
+SKU-5008,Fasteners,1200,2500,3.9,Medium
+SKU-5009,Powertrain,950,800,7.3,Critical
+SKU-5010,Powertrain,310,600,6.1,Critical
+SKU-5011,Optical,2100,1800,5.0,Medium
+SKU-5012,Optical,420,750,3.2,Slow

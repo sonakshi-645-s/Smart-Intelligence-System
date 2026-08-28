@@ -1,0 +1,11 @@
+customer_id,region,destination_city,latitude,longitude,sla_hours,avg_volume
+CUST-201,North America,Chicago,41.8781,-87.6298,24,18500
+CUST-202,North America,Dallas,32.7767,-96.7970,36,14200
+CUST-203,North America,Toronto,43.6532,-79.3832,48,9800
+CUST-204,Western Europe,London,51.5074,-0.1278,24,24600
+CUST-205,Western Europe,Berlin,52.5200,13.4050,36,17100
+CUST-206,Western Europe,Paris,48.8566,2.3522,24,19800
+CUST-207,Asia Pacific,Singapore,1.3521,103.8198,48,22300
+CUST-208,Asia Pacific,Sydney,-33.8688,151.2093,72,11200
+CUST-209,Asia Pacific,Bangalore,12.9716,77.5946,36,16400
+CUST-210,Latin America,Sao Paulo,-23.5505,-46.6333,72,8300

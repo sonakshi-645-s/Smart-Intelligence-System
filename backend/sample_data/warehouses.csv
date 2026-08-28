@@ -1,0 +1,6 @@
+warehouse_id,name,city,latitude,longitude,storage_capacity_sqft,dock_doors,operating_status
+WH-CHI-01,OASIS Central Terminal Alpha,Chicago,41.8781,-87.6298,850000,24,Active
+WH-FRA-02,OASIS European Eurasian Hub,Frankfurt,50.1109,8.6821,620000,18,Active
+WH-DAL-03,OASIS Southern Logistics Yard,Dallas,32.7767,-96.7970,710000,20,Active
+WH-SIN-04,OASIS Asia-Pacific Gateway,Singapore,1.3521,103.8198,540000,16,Active
+WH-BLR-05,OASIS Indian Subcontinent Depot,Bangalore,12.9716,77.5946,480000,14,Active

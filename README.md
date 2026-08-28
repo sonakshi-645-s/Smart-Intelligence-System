@@ -1,4 +1,4 @@
-# OASIS: Operational Analytics and Smart Intelligence System
+# UPS - SIS
 > **Enterprise Supply Chain, Predictive Logistics & Digital Twin Control Plane**  
 > *Engineered for Antigravity IDE & Google AI Studio*
 
@@ -216,5 +216,6 @@ REC-PLAN-02 -> is_active: True
 
 ## 7. License & Authorship
 Developed by the **OASIS Operations Research Team** for Google Antigravity & Google AI Studio enterprise workflows.
-#   S m a r t - I n t e l l i g e n c e - S y s t e m  
+#   S m a r t - I n t e l l i g e n c e - S y s t e m 
+ 
  
